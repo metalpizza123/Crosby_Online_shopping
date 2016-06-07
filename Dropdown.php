@@ -17,8 +17,7 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo( '<option value="'.$data['Name'].'">'.$data['Name']."</option>");
 }
  }
-        
-catch(PDOException $e) {
+       catch(PDOException $e) {
      echo "Error: " . $e->getMessage();
 }
        
@@ -32,7 +31,6 @@ catch(PDOException $e) {
     //isset is a command to check if anything is currently assigned to the variable name
         if ( isset ($_POST['refreshtable'])){
         echo $_POST['formproduct'] ;
-            
             //grabbing the relevant info for the table itself
             $stmt2=$conn->prepare( "SELECT * FROM `products` WHERE `Name` = :item");
             $stmt2->bindParam(":item", $_POST['formproduct']);
@@ -48,15 +46,11 @@ catch(PDOException $e) {
 <input type="int" name="stock" value="'.$data2['Stock'].'"><br>
 <input type="submit" value="Send Data">
 </form> ';
-                
-               
-                
+                                 
             //need to convert this to reflect the get command from the mysql database
-         
-            
-    }
+        }
     else { echo ( 'NOENEOENFEONFEOFNEOFNEONF'
-                );}
+                )};
         ?>
     </body>
 </html>
