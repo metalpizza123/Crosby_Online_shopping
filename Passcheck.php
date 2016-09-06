@@ -14,11 +14,11 @@ session_start();
                     $data=$stmt->fetch(PDO::FETCH_ASSOC);                    
            if (!empty($data)){
                //echo ('god knows why');
-            $_SESSION['username']=$_POST['username'];
-            $_SESSION['wallet value']=$data['Wallet']
-            session_write_close();
-            header("Location: Usersplash.php");
-                 exit;
+                $_SESSION['username']=$_POST['username'];
+                $_SESSION['wallet value']=$data['Wallet']
+                session_write_close();
+                header("Location: Usersplash.php");
+                exit;
                        }      
                     else{echo('Wrong Username/Password');
                         };    
