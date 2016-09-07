@@ -15,7 +15,7 @@ session_start();
            if (!empty($data)){
                //echo ('god knows why');
                 $_SESSION['username']=$_POST['username'];
-                $_SESSION['wallet value']=$data['Wallet']
+                $_SESSION['walletvalue']=$data['Wallet'];
                 session_write_close();
                 header("Location: Usersplash.php");
                 exit;
