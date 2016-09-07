@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-
+<?php
+session_start();
+?>
 <html>
 <body>
 <table>
@@ -10,15 +12,17 @@
 		<th> Remove Order </th>
 		</tr>
 	<?php
-	session_start();
-
 	set int $totalprice =0;
-		try {   require("connect.php");
+		try {require("connect.php");
  	    // set the PDO error mode to exception
 		//find the orders not confirmed yet
+		
 		// add each row to the table like a drop down list
+
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt=$conn-> prepare("SELECT * FROM 'products' WHERE 'UserID'=$_SESSON['username'] AND 'confirmed'= FALSE ");
+    $stmt->execute();
+    $data=$stmt
 
     //find the products that have been ORDERED but not confirmed 
     //loop to spawn the tabele

@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
+<?php
+session_start();
+?>
 <html>
 <body>
 	<?php
-	session_start();
 	echo "Welcome to your splash page";
 	echo($_SESSION['username']);
 	session_write_close();
