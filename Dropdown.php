@@ -50,7 +50,7 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
             //need to convert this to reflect the get command from the mysql database
         }
     else { echo ( 'NOENEOENFEONFEOFNEOFNEONF'
-                )};
+                );}
         ?>
     </body>
 </html>

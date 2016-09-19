@@ -58,23 +58,20 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
         echo  ('Your Order of '.($_POST['quantity']).' x '.($_POST['formproduct'].' has been placed.'));
         // need to add in the order.
         //I'll fetch EVERYTHING first
-        $stmt3= $conn->prepare ("SELECT * FROM `products` WHERE 'Name'=:fooditem");
-        $stmt3->bindParam(":fooditem",$_POST['formproduct']);
-        $stmt3->execute();
-        $data3=$stmt3->fetch(PDO::FETCH_ASSOC);
-        $stmt4=$conn->prepare ("SELECT * FROM `Users` WHERE 'Username'=:loginuser");
-        $stmt4->bindParam(":loginuser",$_SESSION['username']);
-        $stmt4->execute();
-        $data4=$stmt4->fetch(PDO::FETCH_ASSOC);
         //Bind everything to variables for the database entry
-        $ProductID=$data3['ID'];
-        $Productprice=$data3['Price']*$_POST['quantity'];
-        $Newstock=$data3['Stock']-$_POST['quantity'];
+        echo ($data7['ID']);
+        echo ($data7['Price']);
+        $ProductID=$data7['ID'];
+        $Productprice=$data7['Price']*$_POST['quantity'];
+        $Newstock=$data7['Stock']-$_POST['quantity'];
         $Orderstock=$_POST['quantity'];
         $User=$_SESSION['username'];
         $tim=time();
-        $stmt5=$conn->prepare("INSERT INTO `Orders` (OrderID,ProductID,Quantity,Price,OrderDate,UserID,Verified,Delivered) VALUES (Null,'$ProductID','$Orderstock','$Productprice','$tim','$User',False,False) ");
+        echo ("$Productprice");
+        $stmt5=$conn->prepare("INSERT INTO `Orders` (OrderID,ProductID,Quantity,Price,OrderDate,UserID,Verified,Delivered) VALUES (Null,'$ProductID','$Orderstock','$Productprice','$tim','$User',0,0) ");
         $stmt5->execute();
+        $stmt6=$conn->prepare("UPDATE products SET Stock='$canibuy' WHERE ID='$ProductID'");
+        $stmt6->execute();
         }
       }
   if (isset($_POST['refreshtable']) and !isset($_POST['eatingtable'])){

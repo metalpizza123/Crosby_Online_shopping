@@ -5,7 +5,7 @@ session_start();
 <html>
 <body>
 	<?php
-	echo "Welcome to your splash page";
+	echo "Welcome to your splash page, ";
 	echo($_SESSION['username']);
 	session_write_close();
 	?>
