@@ -2,8 +2,6 @@
 <!DOCTYPE HTML>
 <html>
 <body>
- 
-
 <form action="Enternew.html">
 <input type="submit" value="back to enter data page">
 </form>
@@ -12,19 +10,14 @@
 //header('Content-Type: application/json');
 //	ini_set('display_errors', 1);
 //	ini_set('display_startup_errors', 1);
-//	error_reporting(E_ALL);
-				
+//	error_reporting(E_ALL);	
 	$pname=$_POST["pname"];
 	$foodprice=$_POST["price"];
 	$foodstock=$_POST["stock"]; 
-	
-
 //header('Content-Type: application/json');
 	//ini_set('display_errors', 1);
 	//ini_set('display_startup_errors', 1);
 	//error_reporting(E_ALL);
-				
-	
 	try {
    require("connect.php");
     // set the PDO error mode to exception

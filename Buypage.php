@@ -90,8 +90,8 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
        else {
 
         echo('<form method="post" action="#">
-          <input name="formproduct" value="' . $_POST['formproduct'] . '" />
-          <select name="quantity" id="quantity">
+        <input name="formproduct" value="' . $_POST['formproduct'] . '" />
+        <select name="quantity" id="quantity">
         <option value="1"> 1 </option>
         <option value="2"> 2 </option>
         <option value="3"> 3 </option>
@@ -105,6 +105,9 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
 	
   }
 ?>
+<form method="post" action="Usersplash.php">
+  <input type="submit" name="gobackhome" value="Return to main page">
+  </form>
 
 </body>
 </html>

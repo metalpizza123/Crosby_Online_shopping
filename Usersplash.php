@@ -1,7 +1,7 @@
-<!DOCTYPE HTML>
 <?php
 session_start();
 ?>
+<!DOCTYPE HTML>
 <html>
 <body>
 	<?php
@@ -16,10 +16,13 @@ session_start();
 	<input type="submit" name="gocheckoutpage" value="BASKET">
 	</form>
 	<form method="post" action="Pending.php">
-	<input type="submit" name="gopendingpage" value=" PENDING ORDERS">
+	<input type="submit" name="gopendingpage" value="PENDING ORDERS">
 	</form>
 	<form method="post" action="History.php">
 	<input type="submit" name="gohistorypage" value="ORDER HISTORY">
+	</form>
+	<form method="post" action="Login.php">
+	<input type="submit" name="Logoutbutton" value="Log Out">
 	</form>
 </body>
 </html>
