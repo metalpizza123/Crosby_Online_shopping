@@ -50,8 +50,6 @@ session_start();
     	echo "<td>".$truedate."</td>";
         echo "<td>".$status."</td></tr>";
         }
-    
-  
 	?>
 </table> 
 

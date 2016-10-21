@@ -23,7 +23,7 @@
 	<input type="submit" name="goaddnewuser" value="Add New User">
 	</form>
 	<form method="post" action="edititem.php">
-	<input type="submit" name="goedituser" value="Edit Current User Details and Update Wallet balance">
+	<input type="submit" name="goedituser" value="Edit Current User Details 2">
 	</form>
 </body>
 </html>
