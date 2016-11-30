@@ -20,18 +20,27 @@ session_start();
                 header("Location: Usersplash.php");
                 exit;
                        }      
-                    else{echo('Wrong Username/Password');
-                        };    
+                    else{echo('Wrong Username/Password'. 
+                        '<form method="post" action="Login.php">
+    <input type="submit" name="Logoutbutton" value="Back to Login Page">
+    </form>');}    
                                           }    
                 catch(PDOException $e) {
      echo "Error: " . $e->getMessage();
                 }
             }
-            else{echo('Please enter a password');}
-            //if no password
-        }        
-        else{echo('Please enter a username');}
-        //if no username
-    }
-    else{echo('please enter a username and password');}
+            else{echo('Please enter a password'.'
+         <form method="post" action="Login.php">
+    <input type="submit" name="Logoutbutton" value="Back to Login Page">
+    </form>');}}                    //if no password
+
+        else{echo('Please enter a username'.'
+ <form method="post" action="Login.php">
+    <input type="submit" name="Logoutbutton" value="Back to Login Page">
+    </form>');}}        //if no username
+
+    else{echo('please enter a username and password'.'
+ <form method="post" action="Login.php">
+    <input type="submit" name="Logoutbutton" value="Back to Login Page">
+    </form>');}
     ?>
