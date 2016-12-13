@@ -21,6 +21,7 @@ session_start();
     $stmt=$conn->prepare("SELECT * FROM Orders WHERE UserID=:currentuser AND Verified=0");
     $stmt->bindParam(":currentuser",$_SESSION['username']);
     $stmt->execute();
+
     while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
     	//find the products that have been ORDERED but not confirmed 
     //loop to spawn the tabele
@@ -46,20 +47,21 @@ session_start();
 
 
     }
+    echo "</table>";
     //Last row needs to  add a sum of all prices
-	?>
-</table> 
-<?php
+	
 
     echo "your total price is ".$totalprice;
-
+    echo "<br>";
+echo "<form method='post' action='Checkedout.php'>";
+echo "<input type='submit' name='confirmorder' value='Checkout'>";
+echo "<input type='text' name='checkoutprice' value='" . $totalprice . "'type=hidden>";
+echo "</form>";
 ?>
-<form action="Checkedout.php">
-<input type="submit" name='confirmorder' value="Checkout">
-</form>
+<br>
 <form method="post" action="Usersplash.php">
 <input type="submit" name="gobackhome" value="Back to the main page">
 </form>
-<!-- ADD A BUTTON TO CHECK OUT AND DEDUCT FROM THEIR WALLET AND CHANGE CONFIRM VALUES -->
+            <!-- ADD A BUTTON TO CHECK OUT AND DEDUCT FROM THEIR WALLET AND CHANGE CONFIRM VALUES -->
 </body> 
 </html>

@@ -13,7 +13,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 echo($_SESSION['username']);
 echo($_SESSION['walletvalue']);
-
 var_dump($_POST);
 ?>
     <form method="post" action="<?php echo "#" ?>">
@@ -81,8 +80,8 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
 	     $stmt2->execute();
 	     $data2=$stmt2->fetch(PDO::FETCH_ASSOC);
     echo ("there are currently ".$data2['Stock']."x".$_POST['formproduct']." left in stock.".'<br>');
-       // now let them select how many they want diabetes is for 10 units
-	     if ($data2['Stock']<1){ 
+       // now let them select how many they want 
+       	     if ($data2['Stock']<1){ 
         // don't spawn the table 
         echo ("there isn't enough stock for you to order");
        }
@@ -90,13 +89,21 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
        else {
 
         echo('<form method="post" action="#">
-        <input name="formproduct" value="' . $_POST['formproduct'] . '" />
+        <input name="formproduct" value="' . $_POST['formproduct'] . '" type=hidden />
         <select name="quantity" id="quantity">
         <option value="1"> 1 </option>
         <option value="2"> 2 </option>
         <option value="3"> 3 </option>
         <option value="4"> 4 </option>
-        <option value="10">Diabetes</option>
+        <option value="5"> 5 </option>
+        <option value="6"> 6 </option>
+        <option value="7"> 7 </option>
+        <option value="8"> 8 </option>
+        <option value="9"> 9</option>
+        <option value="10"> 10 </option>
+        <option value="15"> 15 </option>
+        <option value="20"> 20 </option>
+        <option value="25"> 25 </option>
         </select>
         <input type="submit" name="eatingtable" value="check item">
         </form>
