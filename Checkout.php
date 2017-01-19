@@ -37,21 +37,20 @@ session_start();
     	echo "<td>".$data['Price']."</td>";
     	echo "<td> <form method='post' action='Removeitem.php'>";
     	$totalprice=$totalprice+$data['Price'];
-    	$therefundamount=$data2['Stock']+$data['Quantity'];
+    	$therefundamount=$data['Quantity'];
     	echo "<input name='formproduct' value='".$data['OrderID']."'type=hidden>";
     	echo "<input name='orderquantity' value='".$therefundamount."'type=hidden>";
     	echo "<input name='foodrefundname' value='".$data2['Name']."'type=hidden>";
     	echo "<input type='submit' name='removeorder' value='Remove'>";
     	echo "</form>";
     	echo "</td></tr>";
-
-
     }
     echo "</table>";
     //Last row needs to  add a sum of all prices
-	
 
     echo "your total price is ".$totalprice;
+    echo "<br>";
+    echo "Your wallet value is ". ($_SESSION[ 'walletvalue']);
     echo "<br>";
 echo "<form method='post' action='Checkedout.php'>";
 echo "<input type='submit' name='confirmorder' value='Checkout'>";

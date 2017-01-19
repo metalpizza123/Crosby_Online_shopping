@@ -80,7 +80,7 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
 	     $stmt2->execute();
 	     $data2=$stmt2->fetch(PDO::FETCH_ASSOC);
     echo ("there are currently ".$data2['Stock']."x".$_POST['formproduct']." left in stock.".'<br>');
-       // now let them select how many they want 
+          // now let them select how many they want 
        	     if ($data2['Stock']<1){ 
         // don't spawn the table 
         echo ("there isn't enough stock for you to order");

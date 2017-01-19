@@ -11,6 +11,9 @@ session_start();
       //print_r ($_POST);
       if ($_POST['checkoutprice']>$_SESSION['walletvalue']){
           echo "You don't have enough funds in your wallet";
+          echo "<form method="post" action="Checkout.php">";
+          echo "<input type="submit" name="gocheckoutpage" value="BASKET">";
+          echo "</form>";
       }
       else { 
             require("connect.php");

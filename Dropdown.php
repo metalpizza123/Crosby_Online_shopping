@@ -2,9 +2,14 @@
 <html>
 <body>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <p> What do yawffwaf?</p>
+    <p> What do you want to edit?</p>
     <select name="formproduct" id="formproduct">
     <?php
+
+    ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 try {   require("connect.php");
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -12,21 +17,24 @@ try {   require("connect.php");
      $stmt->execute();
      // set the resulting array to associative
      //$result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
-while($data=$stmt->fetch(PDO::FETCH_ASSOC)){ 
-    //this is where the table is actually produced
-    echo( '<option value="'.$data['Name'].'">'.$data['Name']."</option>");
-}
+     $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
+     foreach ($data as $key => $value) {
+         if($_POST['formproduct']==$value['Name']){
+            echo( '<option selected value="'.$value['Name'].'">'.$value['Name']."</option>");
+         } 
+         else {
+            echo( '<option value="'.$value['Name'].'">'.$value['Name']."</option>");
+         }     
+     }
  }
        catch(PDOException $e) {
      echo "Error: " . $e->getMessage();
 }
-       
  ?>        
     </select>
    <br>
 <input type="submit" name="refreshtable" value="check item">
             </form>
-    
     <?php
     //isset is a command to check if anything is currently assigned to the variable name
         if ( isset ($_POST['refreshtable'])){
@@ -35,22 +43,22 @@ while($data=$stmt->fetch(PDO::FETCH_ASSOC)){
             $stmt2=$conn->prepare( "SELECT * FROM `products` WHERE `Name` = :item");
             $stmt2->bindParam(":item", $_POST['formproduct']);
             $stmt2->execute();
-            $data2=$stmt2->fetch(PDO::FETCH_ASSOC);
-                    
+            $data2=$stmt2->fetch(PDO::FETCH_ASSOC);                    
            echo '<br>
+           <table>
            <form method="post" action="edititem.php">
-
-<input type="int" name="uniqueid" value="'.$data2['ID'].'" readonly><br>
-<input type="text" name="pname" value="'.$data2['Name'].'"><br>
-<input type="int" name="price" value="'.$data2['Price'].'"><br>
-<input type="int" name="stock" value="'.$data2['Stock'].'"><br>
+<tr><td>Product ID</td><td><input type="int" name="uniqueid" value="'.$data2['ID'].'" readonly></td></tr>
+<tr><td>Product Name</td><td><input type="text" name="pname" value="'.$data2['Name'].'"></td></tr>
+<tr><td>Product Price</td><td><input type="int" name="price" value="'.$data2['Price'].'"></td></tr>
+<tr><td>Product Stock</td><td><input type="int" name="stock" value="'.$data2['Stock'].'"></td></tr>
+</table>
 <input type="submit" value="Send Data">
-</form> ';
-                                 
+</form> ';                               
             //need to convert this to reflect the get command from the mysql database
         }
-    else { echo ( 'NOENEOENFEONFEOFNEOFNEONF'
-                );}
         ?>
+<form method="post" action="Adminsplash.php">
+    <input type="submit" name="gohome" value="Back to Splash Page">
+</form>
     </body>
 </html>
