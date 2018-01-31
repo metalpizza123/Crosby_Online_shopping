@@ -11,8 +11,8 @@ session_start();
 	$refundorder=$oldstock['Quantity']+$quantityrefundamount;
 	$stmt1=$conn->prepare("UPDATE products SET Stock='$refundorder' WHERE `Name`='$theoneweneedtodelete'");
 	$stmt1->execute();
-    $stmt2=$conn->prepare("DELETE FROM  `Orders` WHERE `OrderID`=$theorderthatwasgoinggone");
-   	$stmt2->bindParam(":currentuser",$data3['UserID']);
+    $stmt2=$conn->prepare("DELETE FROM  `Orders` WHERE `UserID`=:currentuser AND `OrderID`=$theorderthatwasgoinggone");
+   	$stmt2->bindParam(":currentuser",$_SESSION['username']);
    	$stmt2->execute();
-	header("Location:checkout2.php");
+   	header("Location:Checkout.php");
 ?>
