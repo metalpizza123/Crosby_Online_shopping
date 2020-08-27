@@ -12,7 +12,7 @@ session_start();
                     $data=$stmt->fetch(PDO::FETCH_ASSOC);                    
            if (!empty($data)){
                //echo ('god knows why');
-            if ($data['UserID']==999){
+            if ($data['UserID']<=999){
                 $_SESSION['adminloggedin']=13484;
                 session_write_close();
                 header("Location: adminsplash2.php");
